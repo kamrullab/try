@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/responsive.css' | relative_url }}">
+  {% include head-custom.html %}
+</head>
+<body>
+  <a href="#main-content" class="skip-to-content">Skip to content</a>
+  <div class="container">
+    <header>
+      <div class="terminal-header">
+        <div class="terminal-controls">
+          <span class="control close"></span>
+          <span class="control minimize"></span>
+          <span class="control maximize"></span>
+        </div>
+        <div class="terminal-title">root@hacker:~#</div>
+      </div>
+      <div class="header-content">
+        <h1>{{ site.title }}</h1>
+        <div class="header-subtitle">{{ site.description }}</div>
+        <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+        <nav>
+          <ul>
+            <li><a href="{{ '/' | relative_url }}">Home</a></li>
+            <li><a href="{{ '/blog' | relative_url }}">Blog</a></li>
+            <li><a href="{{ '/categories' | relative_url }}">Categories</a></li>
+            <li><a href="{{ '/tags' | relative_url }}">Tags</a></li>
+            <li><a href="{{ '/archive' | relative_url }}">Archive</a></li>
+            <li><a href="{{ '/search' | relative_url }}">Search</a></li>
+            {% for page in site.header_pages %}
+              {% assign my_page = site.pages | where: "path", page | first %}
+              {% if my_page.title %}
+              <li><a href="{{ my_page.url | relative_url }}">{{ my_page.title }}</a></li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      {{ content }}
+    </main>
+
+    <footer>
+      <div class="terminal-prompt">
+        <span class="prompt-sign">$</span>
+        <span class="prompt-command">exit</span>
+      </div>
+      <div class="footer-content">
+        <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
+        <p>Powered by <a href="https://jekyllrb.com/">Jekyll</a> and <a href="https://pages.github.com/">GitHub Pages</a>.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+      const navMenu = document.querySelector('nav ul');
+      
+      if (mobileNavToggle && navMenu) {
+        mobileNavToggle.addEventListener('click', function() {
+          navMenu.classList.toggle('active');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

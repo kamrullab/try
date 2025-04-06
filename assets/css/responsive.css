@@ -1,0 +1,412 @@
+/* Responsive Design Enhancements */
+
+/* Mobile-first approach - base styles are already for mobile */
+
+/* Media queries for different screen sizes */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  html {
+    font-size: 15px;
+  }
+  
+  .container {
+    max-width: 540px;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+  
+  .container {
+    max-width: 720px;
+  }
+  
+  /* Navigation improvements */
+  nav ul {
+    display: flex;
+    justify-content: center;
+  }
+  
+  nav li {
+    margin: 0 1rem;
+  }
+  
+  /* Two-column layout for certain sections */
+  .two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  
+  /* Admin panel improvements */
+  .admin-layout {
+    display: flex;
+  }
+  
+  .admin-sidebar {
+    width: 250px;
+    min-height: 100%;
+  }
+  
+  .admin-main {
+    flex: 1;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+  
+  /* Three-column layout for media grid */
+  .media-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  /* Enhanced terminal effects */
+  .terminal-window {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .terminal-window:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+/* Mobile-specific styles (small screens) */
+@media (max-width: 767px) {
+  /* Mobile navigation */
+  .mobile-nav-toggle {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+    background: transparent;
+    border: none;
+    color: var(--accent-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+  }
+  
+  nav li {
+    margin: 0.5rem 0;
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Collapsible mobile menu */
+  .nav-menu {
+    display: none;
+  }
+  
+  .nav-menu.active {
+    display: block;
+  }
+  
+  /* Adjust header for mobile */
+  .header-content {
+    padding: 1rem;
+  }
+  
+  /* Adjust terminal windows for mobile */
+  .terminal-window {
+    margin-bottom: 1.5rem;
+  }
+  
+  .terminal-header {
+    padding: 0.3rem 0.5rem;
+  }
+  
+  .terminal-content {
+    padding: 1rem;
+  }
+  
+  /* Adjust form elements for mobile */
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-control {
+    padding: 0.6rem;
+  }
+  
+  .submit-btn {
+    width: 100%;
+  }
+  
+  /* Adjust admin panel for mobile */
+  .admin-layout {
+    flex-direction: column;
+  }
+  
+  .admin-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--terminal-border);
+  }
+  
+  .admin-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .admin-menu-item {
+    margin: 0.3rem;
+  }
+  
+  .admin-menu-link {
+    padding: 0.5rem 0.8rem;
+    border: 1px solid var(--terminal-border);
+    border-radius: 4px;
+  }
+  
+  /* Adjust markdown editor for mobile */
+  .markdown-editor-content {
+    flex-direction: column;
+  }
+  
+  .markdown-input, .markdown-preview {
+    height: 200px;
+  }
+  
+  /* Adjust search form for mobile */
+  .search-form {
+    flex-direction: column;
+  }
+  
+  .search-input {
+    border-radius: 4px 4px 0 0;
+  }
+  
+  .search-button {
+    border-radius: 0 0 4px 4px;
+  }
+  
+  /* Adjust blog post layout for mobile */
+  .post-navigation {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .prev, .next {
+    max-width: 100%;
+  }
+  
+  /* Adjust category and tag pages for mobile */
+  .tags-cloud {
+    text-align: left;
+  }
+  
+  .tag-link {
+    margin: 0.3rem;
+  }
+}
+
+/* Touch-friendly improvements for mobile devices */
+@media (hover: none) {
+  /* Larger touch targets */
+  nav a, .admin-menu-link, .tag-link, .post-link, .admin-btn, .cta-button {
+    padding: 0.8rem 1rem;
+  }
+  
+  /* Remove hover effects that don't work well on touch devices */
+  a:hover::after {
+    width: 0;
+  }
+  
+  /* Make buttons more touch-friendly */
+  button, .btn, .admin-btn, .submit-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Adjust form controls for touch */
+  input, select, textarea {
+    font-size: 16px; /* Prevents iOS zoom on focus */
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background-color: white;
+    color: black;
+  }
+  
+  .terminal-window {
+    border: 1px solid #ddd;
+    box-shadow: none;
+  }
+  
+  .terminal-header {
+    background-color: #f5f5f5;
+  }
+  
+  a {
+    color: #0066cc;
+    text-decoration: underline;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: none;
+  }
+  
+  nav, .cta-buttons, footer, .admin-panel {
+    display: none;
+  }
+  
+  .post-content, .page-content {
+    font-size: 12pt;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: #000;
+    page-break-after: avoid;
+  }
+  
+  img {
+    max-width: 100% !important;
+  }
+  
+  pre, blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+}
+
+/* Accessibility improvements */
+:focus {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Skip to content link for keyboard users */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.3s ease;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* Dark mode detection */
+@media (prefers-color-scheme: dark) {
+  /* Already dark theme, no changes needed */
+}
+
+@media (prefers-color-scheme: light) {
+  /* Optional: provide a light mode alternative */
+  /* This is commented out since the theme is intentionally dark */
+  /*
+  :root {
+    --bg-primary: #f0f0f0;
+    --bg-secondary: #ffffff;
+    --accent-primary: #006600;
+    --accent-secondary: #008800;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-highlight: #000000;
+    --terminal-header: #e0e0e0;
+    --terminal-border: #cccccc;
+    --glow-shadow: 0 0 10px rgba(0, 102, 0, 0.7), 0 0 20px rgba(0, 102, 0, 0.5);
+  }
+  */
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .terminal-window:hover {
+    transform: none;
+  }
+  
+  .cta-button::before {
+    display: none;
+  }
+}
+
+/* Mobile navigation toggle button */
+.mobile-nav-toggle {
+  display: none; /* Hidden by default, shown in mobile media query */
+}
+
+@media (max-width: 767px) {
+  .mobile-nav-toggle {
+    display: block;
+  }
+  
+  nav ul {
+    display: none;
+  }
+  
+  nav ul.active {
+    display: flex;
+  }
+}
+
+/* Add this to the main HTML to support mobile navigation */
+/* 
+<button class="mobile-nav-toggle" aria-label="Toggle navigation">
+  <i class="fas fa-bars"></i>
+</button>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const navMenu = document.querySelector('nav ul');
+    
+    if (mobileNavToggle && navMenu) {
+      mobileNavToggle.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+      });
+    }
+  });
+</script>
+*/

@@ -1,0 +1,60 @@
+# Site settings
+title: Hacker Blog
+email: your-email@example.com
+description: >-
+  A Jekyll-based blog with a black hacker theme, admin panel, 
+  and GitHub Pages integration.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: jekyllrb
+github_username:  jekyll
+
+# Build settings
+markdown: kramdown
+theme: jekyll-theme-hacker
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+  - LICENSE
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /blog/:year/:month/:day/:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Admin"
+      comments: false
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+
+# Custom variables
+header_pages:
+  - about.md
+  - blog.md
+  - contact.md
+
+# Admin settings
+admin_enabled: true
